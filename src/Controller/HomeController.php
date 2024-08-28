@@ -10,11 +10,10 @@ use Symfony\Component\Routing\Attribute\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(ContactRepository $repo): Response
+    public function index(ContactRepository $repository): Response
     {
-        // dump($repo->findAll());
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'contacts' => $repository->findAll(),
         ]);
     }
 }
