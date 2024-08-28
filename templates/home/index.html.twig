@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Telefonkönyv{% endblock %}
 
 {% block body %}
-<ul class="row">
+<div class="row">
     <div class="col-md">
         <h3>Telefonkönyv címlista</h3>
 
@@ -16,7 +16,7 @@
     
     <div class="col-md">
         <h3>Új névjegy hozzáadása</h3>
-        12345
+        {{ include("home/_form.twig") }}
     </div>
 </div>
 {% endblock %}
