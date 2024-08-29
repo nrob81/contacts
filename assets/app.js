@@ -26,6 +26,13 @@ document.body.addEventListener('htmx:beforeSwap', function(evt) {
   }
 })
 
+window.addEventListener('resize', function() {
+    var formContainer = document.getElementById('contact-form-container');
+    if (window.innerWidth >= 768) {
+        formContainer.style.display = 'block';
+    }
+});
+
 document.addEventListener('htmx:afterRequest', function(event) {
     if (event.detail.xhr.status === 200) {
         toastr.success('Sikeresen elmentve.')
