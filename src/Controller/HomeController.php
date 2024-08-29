@@ -17,7 +17,7 @@ class HomeController extends AbstractController
     public function index(ContactRepository $repository): Response
     {
         return $this->render('home/index.html.twig', [
-            'contacts' => $repository->findAllSorted(),
+            'contacts' => $repository->findAll(),
             'form' => $this->createForm(ContactType::class, new Contact()),
         ]);
     }
@@ -33,14 +33,19 @@ class HomeController extends AbstractController
             $contact = $form->getData();
             $em->persist($contact);
             $em->flush();
-
+            
             $form = $this->createForm(ContactType::class, new Contact()); // reset
         }
-
-        return $this->render('home/_form.html.twig', [
+ 
+        $response = $this->render('home/_form.html.twig', [
             'form' => $form->createView(),
             'contact' => $contact,
         ]);
+ 
+        $hasErrors = $form->isSubmitted() && !$form->isValid();
+        $statusCode = $hasErrors ? Response::HTTP_UNPROCESSABLE_ENTITY : Response::HTTP_OK;
+        $response->setStatusCode($statusCode);
 
+        return $response;
     }
 }
