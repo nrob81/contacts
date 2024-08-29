@@ -16,13 +16,30 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
-    '@hotwired/stimulus' => [
-        'version' => '3.2.2',
-    ],
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
+    'bootstrap-icons/font/bootstrap-icons.min.css' => [
+        'version' => '1.11.3',
+        'type' => 'css',
+    ],
+    '@hotwired/stimulus' => [
+        'version' => '3.2.2',
+    ],
     '@hotwired/turbo' => [
-        'version' => '7.3.0',
+        'version' => '8.0.5',
+    ],
+    'htmx.org' => [
+        'version' => '1.9.12',
+    ],
+    'toastr' => [
+        'version' => '2.1.4',
+    ],
+    'jquery' => [
+        'version' => '3.7.1',
+    ],
+    'toastr/build/toastr.min.css' => [
+        'version' => '2.1.4',
+        'type' => 'css',
     ],
 ];

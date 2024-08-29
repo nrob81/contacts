@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
@@ -14,15 +15,26 @@ class Contact
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3)]
     private ?string $first_name = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3)]
     private ?string $last_name = null;
 
-    #[ORM\Column(length: 15, nullable: true)]
+    #[ORM\Column(length: 20)]
+    #[Assert\NotBlank]
+    #[Assert\Regex(
+        pattern: '/^(\+421|00421|0)\s?\d{3}\s?\d{3}\s?\d{3}$/',
+        message: 'Ez nem érvényes szlovák telefonszám.'
+    )]
     private ?string $phone = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Email]
     private ?string $email = null;
 
     public function getId(): ?int

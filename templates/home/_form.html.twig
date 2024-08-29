@@ -1,0 +1,15 @@
+{% if contact is defined and contact is not null %}
+<ul hx-swap-oob="beforeend:#contact-list">
+    {{ include("home/_item.html.twig", { contact }) }}
+</ul>
+{% endif %}
+
+{{ form_start(form, {'attr': { 'hx-post': path('app_create'), 'novalidate': true }}) }}
+    <div class="row">
+        <div class="col">{{ form_row(form.first_name) }}</div>
+        <div class="col">{{ form_row(form.last_name) }}</div>
+    </div>
+    {{ form_row(form.phone) }}
+    {{ form_row(form.email) }}
+    <div class="text-center">{{ form_row(form.save) }}</div>
+{{ form_end(form) }}
