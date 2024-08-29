@@ -26,10 +26,10 @@ class Contact
 
     #[ORM\Column(length: 20)]
     #[Assert\NotBlank]
-        #[Assert\Regex(
+    #[Assert\Regex(
         pattern: '/^(\+421|00421|0)\s?\d{3}\s?\d{3}\s?\d{3}$/',
         message: 'Ez nem érvényes szlovák telefonszám.'
-        )]
+    )]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255)]

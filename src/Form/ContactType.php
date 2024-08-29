@@ -16,15 +16,15 @@ class ContactType extends AbstractType
             'first_name' => 'Keresztnév',
             'last_name' => 'Vezetéknév',
             'phone' => 'Telefonszám',
-            'email' => 'Email cím'
+            'email' => 'Email cím',
         ];
 
         foreach ($fields as $fieldName => $label) {
             $builder->add($fieldName, null, [
-                'label' => false, 
+                'label' => false,
                 'attr' => [
-                    'placeholder'=>$label
-                ]
+                    'placeholder' => $label,
+                ],
             ]);
         }
 

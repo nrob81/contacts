@@ -27,7 +27,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'contacts' => $repository->findAllSorted(),
-            'form' => $form
+            'form' => $form,
         ]);
     }
 }
