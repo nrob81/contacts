@@ -12,9 +12,14 @@
         </ul>
     </div>
     
-    <div class="col-md">
+    <div id="contact-form-container" class="col-md">
         <h3>Új névjegy hozzáadása</h3>
         {{ include("home/_form.html.twig") }}
     </div>
 </div>
+
+<button id="add-contact-button" class="btn btn-primary btn-circle">
+    <i class="bi bi-plus"></i>
+</button>
+
 {% endblock %}

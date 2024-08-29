@@ -1,5 +1,5 @@
 {% if contact is defined and contact is not null %}
-<ul hx-swap-oob="afterbegin:#contact-list">
+<ul hx-swap-oob="beforeend:#contact-list">
     {{ include("home/_item.html.twig", { contact }) }}
 </ul>
 {% endif %}
