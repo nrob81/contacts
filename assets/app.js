@@ -28,9 +28,7 @@ document.body.addEventListener('htmx:beforeSwap', function(evt) {
 
 window.addEventListener('resize', function() {
     var formContainer = document.getElementById('contact-form-container');
-    if (window.innerWidth >= 768) {
-        formContainer.style.display = 'block';
-    }
+    formContainer.style.display = window.innerWidth >= 768 ? 'block' : 'none';
 });
 
 document.addEventListener('htmx:afterRequest', function(event) {
