@@ -7,14 +7,14 @@
 
         <ul id="contact-list" class="list-group">
         {% for contact in contacts %}
-            {{ include("home/_item.twig", { contact }) }}
+            {{ include("home/_item.html.twig", { contact }) }}
         {% endfor %}
         </ul>
     </div>
     
     <div class="col-md">
         <h3>Új névjegy hozzáadása</h3>
-        {{ include("home/_form.twig") }}
+        {{ include("home/_form.html.twig") }}
     </div>
 </div>
 {% endblock %}

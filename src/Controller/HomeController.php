@@ -14,20 +14,33 @@ use Symfony\Component\Routing\Attribute\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(Request $request, ContactRepository $repository, EntityManagerInterface $em): Response
+    public function index(ContactRepository $repository): Response
+    {
+        return $this->render('home/index.html.twig', [
+            'contacts' => $repository->findAllSorted(),
+            'form' => $this->createForm(ContactType::class, new Contact()),
+        ]);
+    }
+
+    #[Route('/create', name: 'app_create')]
+    public function create(Request $request, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(ContactType::class, new Contact());
-
+        
+        $contact = null;
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
             $em->persist($contact);
             $em->flush();
+
+            $form = $this->createForm(ContactType::class, new Contact()); // reset
         }
 
-        return $this->render('home/index.html.twig', [
-            'contacts' => $repository->findAllSorted(),
-            'form' => $form,
+        return $this->render('home/_form.html.twig', [
+            'form' => $form->createView(),
+            'contact' => $contact,
         ]);
+
     }
 }
