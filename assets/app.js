@@ -1,7 +1,9 @@
 import './vendor/bootstrap/dist/css/bootstrap.min.css'
 import './vendor/bootstrap-icons/font/bootstrap-icons.min.css'
-import './styles/app.css';
-import 'htmx.org';
+import './styles/app.css'
+import 'htmx.org'
+import toastr from 'toastr'
+import './vendor/toastr/build/toastr.min.css'
 
 function toggleForm() {
     var formContainer = document.getElementById('contact-form-container')
@@ -25,8 +27,9 @@ document.body.addEventListener('htmx:beforeSwap', function(evt) {
 })
 
 document.addEventListener('htmx:afterRequest', function(event) {
-    if (window.innerWidth < 768) {
-        if (event.detail.xhr.status === 200) {
+    if (event.detail.xhr.status === 200) {
+        toastr.success('Sikeresen elmentve.')
+        if (window.innerWidth < 768) {
             var formContainer = document.getElementById('contact-form-container')
             formContainer.style.display = 'none'
         }

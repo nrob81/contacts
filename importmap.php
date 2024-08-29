@@ -32,4 +32,14 @@ return [
     'htmx.org' => [
         'version' => '1.9.12',
     ],
+    'toastr' => [
+        'version' => '2.1.4',
+    ],
+    'jquery' => [
+        'version' => '3.7.1',
+    ],
+    'toastr/build/toastr.min.css' => [
+        'version' => '2.1.4',
+        'type' => 'css',
+    ],
 ];
